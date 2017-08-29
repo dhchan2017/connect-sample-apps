@@ -1,5 +1,5 @@
 ## Description
-These are a series of sample applications that leverage the Connect framework
+This is a series of sample applications that leverage the Connect framework
 
 ## Installation Instructions
 How to install
