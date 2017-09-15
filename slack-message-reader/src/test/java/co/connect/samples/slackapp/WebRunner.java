@@ -1,9 +1,11 @@
 package co.connect.samples.slackapp;
 
+import bathe.BatheBooter;
+import nz.ac.auckland.war.WebAppRunner;
+import org.junit.Test;
+
 import java.io.File;
 import java.io.IOException;
-import org.junit.Test;
-import bathe.BatheBooter;
 
 public class WebRunner {
 
