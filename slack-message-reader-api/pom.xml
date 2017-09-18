@@ -35,11 +35,18 @@
             <artifactId>spring-jax-rs-client-proxy</artifactId>
             <version>1.0.1</version>
         </dependency>
+
         <dependency>
             <groupId>cd.connect.servlet</groupId>
             <artifactId>servlet-spring</artifactId>
             <version>1.5-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>cd.connect.servlet</groupId>
+            <artifactId>servlet-spring-jersey</artifactId>
+            <version>1.5-SNAPSHOT</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -96,6 +103,11 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>4.3.9.RELEASE</version>
+        </dependency>
 
         <dependency>
             <groupId>org.glassfish.jersey.ext</groupId>
@@ -122,12 +134,12 @@
             <plugin>
                 <groupId>io.swagger</groupId>
                 <artifactId>swagger-codegen-maven-plugin</artifactId>
-                <version>2.1.6</version>
+                <version>2.2.3</version>
                 <dependencies>
                     <dependency>
-                        <groupId>cd.connect.common.swagger</groupId>
-                        <artifactId>swagger-codegen</artifactId>
-                        <version>0.0.1-SNAPSHOT</version>
+                        <groupId>cd.connect.openapi</groupId>
+                        <artifactId>connect-openapi-jersey2</artifactId>
+                        <version>1.1-SNAPSHOT</version>
                     </dependency>
                 </dependencies>
                 <executions>
@@ -139,11 +151,11 @@
                         <phase>generate-sources</phase>
                         <configuration>
                             <output>${project.basedir}/target/generated-sources/api</output>
-                            <apiPackage>co.connect.samples.slackapp.api</apiPackage>
-                            <modelPackage>co.connect.samples.slackapp.api</modelPackage>
-                            <inputSpec>${project.basedir}/src/main/resources/api.yaml</inputSpec>
-                            <language>jaxrs-client</language>
-                            <library>jersey2</library>
+                            <apiPackage>cd.connect.samples.slackapp.api</apiPackage>
+                            <modelPackage>cd.connect.samples.slackapp.api</modelPackage>
+                            <inputSpec>${project.basedir}/src/main/resources/oas.json</inputSpec>
+                            <language>jersey2-api</language>
+                            <library>jersey2-api</library>
                             <configOptions>
                                 <serviceName>slackMessageReader</serviceName>
                                 <servicePort>8080</servicePort>
@@ -185,12 +197,12 @@
                         <configuration>
                             <scanner>
                                 <packages>
-                                    <package>co.connect.samples.slackapp.api-r=jersey/@Path</package>
+                                    <package>cd.connect.samples.slackapp.api-r=jersey/@Path</package>
                                 </packages>
                                 <templates>
                                     <template>
                                         <joinGroup>jersey</joinGroup>
-                                        <className>co.connect.samples.slackapp.api.SlackMessageyApiModule</className>
+                                        <className>cd.connect.samples.slackapp.api.SlackMessageyApiModule</className>
                                         <template>/generator/jersey-proxy-module.mustache</template>
                                         <context>
                                             <key>MESSAGE_SERVICES_KEY</key>

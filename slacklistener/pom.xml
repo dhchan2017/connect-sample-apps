@@ -18,7 +18,7 @@
         <dependency>
             <groupId>com.bluetrainsoftware.bathe.initializers</groupId>
             <artifactId>system-property-loader</artifactId>
-            <version>3.1-SNAPSHOT</version>
+            <version>3.1</version>
         </dependency>
         <dependency>
             <groupId>org.yaml</groupId>
