@@ -1,6 +1,5 @@
 package cd.connect.samples.slackapp;
 
-import cd.connect.samples.slackapp.api.jaxrs.JaxrsClientManager;
 import cd.connect.spring.jersey.log.JerseyFilteringConfiguration;
 import cd.connect.spring.servlet.ServletModuleRegistration;
 import com.bluetrainsoftware.common.config.EnableStickyConfiguration;
