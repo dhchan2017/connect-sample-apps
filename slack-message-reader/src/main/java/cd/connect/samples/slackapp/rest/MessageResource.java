@@ -1,18 +1,17 @@
 package cd.connect.samples.slackapp.rest;
 
 import cd.connect.samples.slackapp.api.Messagelist;
-import cd.connect.samples.slackapp.api.MessagesApi;
+import cd.connect.samples.slackapp.api.MessagesService;
 
 import javax.inject.Singleton;
 import javax.ws.rs.NotFoundException;
 import java.math.BigDecimal;
 
 @Singleton
-public class MessageResource implements MessagesApi{
-
+public class MessageResource implements MessagesService{
 
     @Override
-    public Messagelist gETMessages(String authorization, String userId, BigDecimal fromDate, BigDecimal toDate) throws NotFoundException {
-        return null;
+    public Messagelist gETMessages(String userId, BigDecimal fromDate, BigDecimal toDate) {
+        return new Messagelist();
     }
 }
