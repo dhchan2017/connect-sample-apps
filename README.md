@@ -1,21 +1,25 @@
+# connect-sample-apps
+
 ## Description
 This is a series of sample applications that leverage the Connect framework
 
 ## Installation Instructions
-How to install
+
 
 ## Build Status
-TravisCI link
 
-# Connect
-Connect is a Continuous Delivery Platform from [ClearPoint](http://clearpoint.co.nz)  
-
-Connect gathers our best practice approaches to deploying working software into the cloud with confidence.
-
-The main Connect repository is [here](https://github.com/ClearPointNZ/connect)
 
 ## Documentation
-The main documentation for Connect can be found here: [docs.connect.cd](http://docs.connect.cd)
+There is no further specific documentation for this.
 
-## Help
-Any queries on the Connect platform can be sent here: <connect@clearpoint.co.nz>
+The main documentation for [Connect](http://connect.cd) can be found at: [docs.connect.cd](http://docs.connect.cd)
+
+----------------------
+![# Connect](http://website.clearpoint.co.nz/connect/connect-logo-on-white-border.png "Connect Continuous Delivery Platform")
+
+[Connect](http://connect.cd) is a Continuous Delivery Platform that gathers best practice approaches for deploying working software into the cloud with confidence.
+
+The main documentation for [Connect](http://connect.cd) can be found at [docs.connect.cd](http://docs.connect.cd)
+
+Any queries on the [Connect](http://connect.cd) platform can be sent to: <connect@clearpoint.co.nz>
+
