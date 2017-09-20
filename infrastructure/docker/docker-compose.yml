@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  elasticsearch:
+    container_name: elasticsearch 
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.1
+    ports:
+      - 9200:9200
+      - 9300:9300
+    environment:
+      - discovery.type=single-node 
+      - xpack.security.enabled=false
+      - cluster.name=slacklistener
+
+  activemq:
+    container_name: activemq
+    image: webcenter/activemq
+    ports:
+      - 8161:8161
+      - 61616:61616
+      - 61613:61613

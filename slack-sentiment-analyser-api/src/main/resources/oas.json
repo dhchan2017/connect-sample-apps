@@ -1,0 +1,61 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "",
+        "title": "slack-sentiment-analyser",
+        "description": ""
+    },
+    "host": "slack-sentiment-analyser",
+    "basePath": "/data",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/sentiment": {
+            "get": {
+                "operationId": "GET_sentiment",
+                "summary": "get current sentiment",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/sentimentsummary"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "sentimentsummary": {
+            "title": "SentimentSummary",
+            "type": "object",
+            "properties": {
+                "channels": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/channel"
+                    }
+                }
+            }
+        },
+        "channel": {
+            "title": "Channel",
+            "type": "object",
+            "properties": {
+                "channel": {
+                    "type": "string"
+                },
+                "messageCount": {
+                    "type": "number"
+                },
+                "sentiment": {
+                    "type": "number"
+                }
+            }
+        }
+    }
+}
