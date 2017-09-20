@@ -25,8 +25,8 @@ public final class ConfigConst {
     /**
      * The Constant MESSAGE_SERVICES_KEY.
      */
-    public static final String MESSAGE_SERVICES_KEY = "message.services";
-    private static final String MESSAGE_SERVICES_URL = "http://message-service:9090/event/1/0";
+    public static final String MESSAGE_SERVICES_KEY = "sentiment.services";
+    private static final String MESSAGE_SERVICES_URL = "http://sentiment-service:9090/data";
 
 
 

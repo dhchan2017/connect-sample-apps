@@ -1,0 +1,25 @@
+package {{packageName}};
+
+import cd.connect.samples.slackapp.api.config.ConfigConst;
+import cd.connect.jersey.client.JaxrsClientModule;
+
+{{#jersey}}
+  // plain resources
+  {{#sortedTypes}}
+import {{packageName}}.{{name}};
+  {{/sortedTypes}}
+{{/jersey}}
+import java.util.stream.Stream;
+
+public class {{simpleName}} extends JaxrsClientModule {
+  @Override
+  public void register() {
+    targetUrl = ConfigConst.url(ConfigConst.{{key}});
+
+{{#jersey}}
+    target({{#sortedTypes}}
+                         {{name}}.class{{^-last}}, {{/-last}}
+                       {{/sortedTypes}});
+{{/jersey}}
+  }
+}
