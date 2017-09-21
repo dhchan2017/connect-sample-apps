@@ -1,0 +1,29 @@
+{
+  "name": "connect-slack-vibe",
+  "version": "1.0.0",
+  "description": "connect-slack-vibe",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config webpack.dev.js --progress --profile --watch --open",
+    "build": "webpack --config webpack.prod.js --progress --profile --bail"
+  },
+  "author": "Laurence Ho <laurence.ho@clearpoint.co.nz>",
+  "license": "ISC",
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.2.3",
+    "css-loader": "^0.28.7",
+    "html-webpack-plugin": "^2.30.1",
+    "source-map-loader": "^0.2.1",
+    "style-loader": "^0.18.2",
+    "typescript": "^2.5.2",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2",
+    "webpack-merge": "^4.1.0"
+  },
+  "dependencies": {
+    "@types/react": "^16.0.5",
+    "@types/react-dom": "^15.5.4",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
+}
