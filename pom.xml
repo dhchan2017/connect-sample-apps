@@ -12,6 +12,7 @@
 <module>slacklistener</module>
 <module>slack-sentiment-analyser-api</module>
 <module>slack-sentiment-analyser</module>
+<module>slack-e2e-api-tests</module>
   </modules>
 
 </project>
