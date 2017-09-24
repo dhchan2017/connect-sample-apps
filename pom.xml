@@ -9,7 +9,7 @@
   <modules>
 <module>slack-message-reader</module>
 <module>slack-message-reader-api</module>
-<module>slacklistener</module>
+<!--<module>slacklistener</module>-->
 <module>slack-sentiment-analyser-api</module>
 <module>slack-sentiment-analyser</module>
 <module>slack-e2e-api-tests</module>
