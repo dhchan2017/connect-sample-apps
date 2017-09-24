@@ -7,47 +7,39 @@
 
     <groupId>cd.connect.samples.slackapp</groupId>
     <artifactId>slack-sentiment-analyser-api</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1-SNAPSHOT</version>
 
     <dependencies>
-        <dependency>
-            <groupId>javax.ws.rs</groupId>
-            <artifactId>javax.ws.rs-api</artifactId>
-            <version>2.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.jmnarloch</groupId>
-            <artifactId>spring-jax-rs-client-proxy</artifactId>
-            <version>1.0.1</version>
-        </dependency>
+	    <!-- require for annotations -->
+	    <dependency>
+		    <groupId>cd.connect.composites.java</groupId>
+		    <artifactId>connect-composite-jaxrs</artifactId>
+		    <version>[1.1, 2)</version>
+	    </dependency>
 
-        <dependency>
-            <groupId>cd.connect.servlet</groupId>
-            <artifactId>servlet-spring</artifactId>
-            <version>1.5-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>cd.connect.composites.java</groupId>
-            <artifactId>connect-composite-jersey-client</artifactId>
-            <version>1.2-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>cd.connect.common</groupId>
-            <artifactId>connect-jersey-client</artifactId>
-            <version>1.1-SNAPSHOT</version>
-        </dependency>
-
+	    <!-- we need this only to compile, only a client would need it and they should include it themselves -->
+	    <dependency>
+		    <groupId>cd.connect.common</groupId>
+		    <artifactId>connect-jersey-client</artifactId>
+		    <version>1.1-SNAPSHOT</version>
+		    <scope>provided</scope>
+	    </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
+	        <plugin>
+		        <groupId>io.repaint.maven</groupId>
+		        <artifactId>tiles-maven-plugin</artifactId>
+		        <version>2.10</version>
+		        <extensions>true</extensions>
+		        <configuration>
+			        <filtering>false</filtering>
+			        <tiles>
+				        <tile>cd.connect.tiles:tile-java:[1.1, 2)</tile>
+			        </tiles>
+		        </configuration>
+	        </plugin>
             <plugin>
                 <groupId>io.swagger</groupId>
                 <artifactId>swagger-codegen-maven-plugin</artifactId>
@@ -61,7 +53,7 @@
                 </dependencies>
                 <executions>
                     <execution>
-                        <id>order</id>
+                        <id>slack-sentiment-api</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
@@ -74,9 +66,8 @@
                             <language>jersey2-api</language>
                             <library>jersey2-api</library>
                             <configOptions>
-                                <serviceName>slackSentimentAnalyser</serviceName>
-                                <servicePort>8080</servicePort>
-                                <dateLibrary>java8</dateLibrary>
+                              <serviceName>slackSentimentAnalyser</serviceName>
+	                            <serviceAddress>http://slack-sentiment-analyser:8090/data</serviceAddress>
                             </configOptions>
                         </configuration>
                     </execution>
@@ -97,38 +88,6 @@
                                 <source>target/generated-sources/api/src/gen/java</source>
                             </sources>
                         </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>cd.connect.common</groupId>
-                <artifactId>connect-gen-code-scanner</artifactId>
-                <version>1.2-SNAPSHOT</version>
-                <executions>
-                    <execution>
-                        <id>default</id>
-                        <goals>
-                            <goal>generate-sources</goal>
-                        </goals>
-                        <phase>generate-sources</phase>
-                        <configuration>
-                            <scanner>
-                                <packages>
-                                    <package>cd.connect.samples.slackapp.api-r=jersey/@Path</package>
-                                </packages>
-                                <templates>
-                                    <template>
-                                        <joinGroup>jersey</joinGroup>
-                                        <className>cd.connect.samples.slackapp.api.SlackSentimentAnalyserApiModule</className>
-                                        <template>/generator/jersey-proxy-module.mustache</template>
-                                        <context>
-                                            <key>MESSAGE_SERVICES_KEY</key>
-                                        </context>
-                                    </template>
-                                </templates>
-                            </scanner>
-                        </configuration>
-
                     </execution>
                 </executions>
             </plugin>
