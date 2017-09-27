@@ -7,11 +7,15 @@ import cucumber.api.java.en.Then;
 import cd.connect.samples.slackapp.api.MessagesService;
 import cd.connect.samples.slackapp.api.Messagelist;
 import cd.connect.service.ApiService;
+import gherkin.deps.com.google.gson.JsonObject;
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javax.ws.rs.core.Response;
 import java.math.BigDecimal;
+import java.util.HashMap;
 import static org.fest.assertions.api.Assertions.assertThat;
+
 
 
 public class MyStepdefs {
@@ -63,10 +67,13 @@ public class MyStepdefs {
 		assertThat(messagelist).isNotEmpty();
 	}
 
-	@Given("^a message is sent to a slack channel$")
-	public void aMessageIsSentToSlackApi() throws Throwable {
+	@Given("^a (.*) is sent to a slack channel$")
+	public void aTextIsSentToSlackApi(String Text) throws Throwable {
 
-		slackList = apiService.slackApi();
+		HashMap<String,String> map = new HashMap<>();
+		map.put("text",Text);
+
+		slackList = apiService.slackMessagePost(map);
 
 	}
 
@@ -101,5 +108,7 @@ public class MyStepdefs {
 		previousCount = getCurrentMessageCount();
 
 	}
+
+
 
 }

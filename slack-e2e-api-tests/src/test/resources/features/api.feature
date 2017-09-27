@@ -1,4 +1,4 @@
-@Regression
+
 Feature: Testing listener service
 	AS a listener service that can monitor a given slack channel
 	I WANT to be able to extract events from that channel
