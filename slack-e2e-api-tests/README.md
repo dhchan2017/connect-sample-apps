@@ -1,16 +1,9 @@
 *** This project is WIP ***
 
+Install with Maven
 
-Compile with Maven
+`mvn clean install`
 
-`mvn clean compile test-compile`
 
-Run parallel tests: 
-
-`mvn test -Pparallel`
-
-Run sequential tests: 
-
-`mvn test -Psequential`
 
 
