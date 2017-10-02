@@ -66,7 +66,7 @@ public class MyStepdefs {
 
 		messagelist = apiService.messagesApi().gETMessages(userId, fromDate, toDate);
 
-	}
+}
 
 	@Then("^I should get a list of messages$")
 	public void iShouldGetAListOfMessages() throws Throwable {
