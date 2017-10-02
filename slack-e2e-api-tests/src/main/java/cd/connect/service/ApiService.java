@@ -12,10 +12,11 @@ import javax.ws.rs.client.WebTarget;
 public class ApiService {
 
 	private Client client = ClientBuilder.newClient(new ClientConfig().register(LoggingFilter.class));
-	private WebTarget webTarget = client.target(System.getProperty("sentimentAnalyser.api"));
+	private WebTarget webTarget = client.target(System.getProperty("sentiment.analyser.api"));
+	private WebTarget target = client.target(System.getProperty("services.mock.api"));
 
 	public MessagesService messagesApi() {
-		return WebResourceFactory.newResource(MessagesService.class, webTarget);
+		return WebResourceFactory.newResource(MessagesService.class, target);
 	}
 
 	public SentimentService sentimentApi() {

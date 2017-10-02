@@ -1,5 +1,6 @@
 package steps;
 
+import cd.connect.samples.slackapp.api.Channel;
 import cd.connect.samples.slackapp.api.Messagelist;
 import cd.connect.samples.slackapp.api.Sentimentsummary;
 import cd.connect.service.ApiService;
@@ -11,6 +12,8 @@ import support.SlackApiHelper;
 import javax.ws.rs.core.Response;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
@@ -22,19 +25,19 @@ public class MyStepdefs {
 	private Sentimentsummary sentimentSummary;
 	private BigDecimal previousCount = new BigDecimal(0);
 
+
 	private BigDecimal getCurrentMessageCount() {
-		BigDecimal count = new BigDecimal(0);
+
 		sentimentSummary = apiService.sentimentApi().gETSentiment();
 
-		for (int i = 0; i < sentimentSummary.getChannels().size(); i++) {
-			String channelName = sentimentSummary.getChannels().get(i).getChannel();
+		List<BigDecimal> messageCount = sentimentSummary.getChannels().stream()
+				.filter(str -> str.getChannel().contentEquals("connect-testing"))
+				.map(Channel::getMessageCount)
+				.collect(Collectors.toList());
 
-			if (channelName.contentEquals("connect-testing")) {
-				count = sentimentSummary.getChannels().get(i).getMessageCount();
-			}
-		}
-		return count;
+		return messageCount.get(0);
 	}
+
 
 	private BigDecimal getCurrentSentimentCount() {
 
@@ -90,10 +93,7 @@ public class MyStepdefs {
 	@Then("^the message count of slack sentiment analyser api should be increased by one$")
 	public void theMessageCountIncreasedToOne() throws Throwable {
 
-		BigDecimal currentCountAfterNewMessage = new BigDecimal(0);
-		currentCountAfterNewMessage = getCurrentMessageCount();
-
-		assertThat(currentCountAfterNewMessage).isEqualTo(previousCount.add(new BigDecimal(1)));
+		assertThat(getCurrentMessageCount()).isEqualTo(previousCount.add(new BigDecimal(1)));
 
 	}
 
