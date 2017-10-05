@@ -111,7 +111,7 @@ public class MyStepdefs {
 
 	}
 
-	@Then("^the sentiment count of slack sentiment analyser api should be displayed as (.*)$")
+	@Then("^the sentiment count of slack sentiment analyser api should be (.*)$")
 	public void sentimentCountDisplayedAs(BigInteger happyOrSadCount) throws Throwable {
 
 		assertThat(getCurrentSentimentCount().toBigInteger()).isEqualTo(happyOrSadCount);
