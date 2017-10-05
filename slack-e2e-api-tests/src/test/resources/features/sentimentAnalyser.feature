@@ -18,7 +18,7 @@ Feature: Slack Sentiment Analyser
   Scenario Outline: Get sentiment count as 10 when a happy message is sent to a slack channel
 	Given a <happyMessage> is sent to a slack channel
 	When I call slack sentiment analyser api
-	Then the sentiment count of slack sentiment analyser api should be displayed as <sentimentCount>
+	Then the sentiment count of slack sentiment analyser api should be <sentimentCount>
 
 	Examples:
 	  | happyMessage               | sentimentCount |
@@ -28,7 +28,7 @@ Feature: Slack Sentiment Analyser
   Scenario Outline: Get sentiment count as 1 when a sad message is sent to a slack channel
 	Given a <sadMessage> is sent to a slack channel
 	When I call slack sentiment analyser api
-	Then the sentiment count of slack sentiment analyser api should be displayed as <sentimentCount>
+	Then the sentiment count of slack sentiment analyser api should be <sentimentCount>
 
 	Examples:
 	  | sadMessage               | sentimentCount |
