@@ -44,3 +44,4 @@ web-fragment.xml
 
 slack-e2e-api-tests/target/
 slack-vibe/node_modules/
+*/target/
